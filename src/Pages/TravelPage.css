@@ -1,0 +1,46 @@
+body {
+    background-image: url("./Images/image1.jpg");
+    background-size: cover;
+    background-position: top;
+    background-repeat: no-repeat;
+    background: cover;
+
+
+}
+
+.heading-name {
+    font-style: italic;
+}
+
+.btn1 {
+    background-color: #3498db;
+    color: #ffffff;
+    border: none;
+    padding: 5px 10px;
+    font-size: 16px;
+    cursor: pointer;
+    border-radius: 1rem;
+    margin-right: 150px;
+}
+
+.btn2 {
+    background-color: #3498db;
+    color: #ffffff;
+    border: none;
+    padding: 5px 10px;
+    font-size: 16px;
+    cursor: pointer;
+    border-radius: 1rem;
+
+}
+
+.btn5 {
+    background-color: #3498db;
+    color: #ffffff;
+    border: none;
+    padding: 5px 10px;
+    font-size: 16px;
+    cursor: pointer;
+    border-radius: 1rem;
+    /* margin-right: 150px; */
+}

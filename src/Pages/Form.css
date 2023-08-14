@@ -1,0 +1,70 @@
+.card {
+    background-color: white;
+    border: none;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    width: 250px;
+    margin-left: 500px;
+    margin-top: 30px;
+    margin-right: 15px;
+}
+
+.form-container {
+    display: inline-block;
+}
+
+.input-text {
+    width: 70%;
+    padding: 5px;
+    border-radius: 5px;
+    margin-bottom: 10px;
+    border-color: black;
+    font-size: 16px;
+
+}
+
+.btn3 {
+    background-color: #3498db;
+    color: #ffffff;
+    border: none;
+    padding: 5px 10px;
+    font-size: 16px;
+    cursor: pointer;
+    border-radius: 1rem;
+    margin-left: 10px;
+    /* margin-right: 150px; */
+}
+
+.button-light {
+    background-color: #f2f2f2;
+    color: #666;
+
+    border: none;
+    padding: 5px 10px;
+    font-size: 16px;
+    cursor: pointer;
+    border-radius: 1rem;
+    margin-left: 10px;
+}
+
+.button-dark {
+    background-color: #3498db;
+    color: #ffffff;
+    border: none;
+    padding: 5px 10px;
+    font-size: 16px;
+    cursor: pointer;
+    border-radius: 1rem;
+    margin-left: 10px;
+}
+
+.button-light:disabled {
+    background-color: #e0e0e0;
+    color: #999;
+}
+
+.button-dark:disabled {
+    background-color: #3498db;
+    color: #ffffff
+}

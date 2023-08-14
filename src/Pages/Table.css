@@ -1,0 +1,72 @@
+.cards,
+table {
+    width: 90%;
+    border-collapse: collapse;
+    /* margin: 15px 0px; */
+    margin-left: 80px;
+    margin-top: 50px;
+    position: relative;
+    box-shadow: 3px 3px 13px rgba(125, 121, 121, 0.2);
+    background-color: transparent;
+    position: relative;
+
+
+}
+
+th {
+    font-weight: bolder;
+    background-color: #3498db;
+    color: white;
+    font-size: medium;
+    padding: 15px;
+
+}
+
+
+
+
+
+
+td {
+    /* border: 1px soild #bdc3c7; */
+    padding: 15px;
+    margin-top: 50px;
+    /* margin-left: 300px;
+    margin-right: 200px; */
+    text-align: center;
+    background-color: white;
+    color: black;
+
+}
+
+th,
+td {
+    border-bottom: 1px solid #dddddddd;
+
+
+}
+
+.close {
+
+    background-color: transparent;
+    border: none;
+    font-size: 1.5rem;
+    cursor: pointer;
+    padding: 0;
+    color: white;
+    /* margin-left: 1240px; */
+    position: absolute;
+    top: 0;
+    right: 0%;
+    margin-right: 10px;
+}
+
+
+.btn2 {
+    background-color: #3498db;
+    padding: 3px 3px;
+    margin-right: 10px;
+    cursor: pointer;
+    border-radius: 0.1rem;
+
+}
