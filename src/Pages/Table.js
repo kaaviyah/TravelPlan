@@ -1,7 +1,7 @@
 import { React, useEffect, useState } from "react";
 import "./Table.css";
 // import "./Mainpage.css";
-function Table({ travelData, cap, onClose1, onUpdateTravelData }) {
+function Table({ travelData, cap, onClose1, setTravelData }) {
     const [rows, setRows] = useState(travelData);
     const editRow = (entry) => {
 
@@ -13,6 +13,9 @@ function Table({ travelData, cap, onClose1, onUpdateTravelData }) {
             return r;
         });
         setRows(updatedRows);
+        // setTravelData(rows);
+
+
         // onUpdateTravelData(updatedRows)
 
     };
@@ -24,7 +27,7 @@ function Table({ travelData, cap, onClose1, onUpdateTravelData }) {
 
             return r;
         });
-
+        setTravelData(updatedRows);
         setRows(updatedRows);
         console.log(entry);
         // onUpdateEntry(index, entry);
@@ -35,23 +38,10 @@ function Table({ travelData, cap, onClose1, onUpdateTravelData }) {
         updatedRows.splice(index, 1);
         setRows(updatedRows);
     };
-    useEffect(() => {
-        const storedRows = JSON.parse(localStorage.getItem("tableRows"));
-        if (storedRows) {
-            setRows(storedRows);
-        } else {
-            setRows(rows);
-        }
-    }, []);
 
-    // Save the rows array to local storage whenever it changes
-    useEffect(() => {
-        localStorage.setItem("tableRows", JSON.stringify(rows));
-    }, [rows]);
     return (
 
         <div>
-
             <div className="cards">
                 {/* <h2>Travel History</h2> */}
 
@@ -75,102 +65,113 @@ function Table({ travelData, cap, onClose1, onUpdateTravelData }) {
 
                     <tbody>
                         {
-                            rows.map((entry, index) => (
-                                <tr key={index}>
-                                    {!entry.editing && <td>{entry.title}</td>}
-                                    {!entry.editing && <td>{entry.startDate}</td>}
-                                    {!entry.editing && <td>{entry.endDate}</td>}
-                                    {!entry.editing && <td>{entry.totalDays}</td>}
-                                    {!entry.editing && <td>{entry.description}</td>}
-                                    {entry.editing && (
-                                        <td>
-                                            <input
-                                                className="editable"
-                                                type="text"
-                                                value={entry.title}
-                                                onChange={(e) => {
-                                                    const updatedRows = [...rows];
-                                                    updatedRows[index].title = e.target.value;
-                                                    setRows(updatedRows);
-                                                }}
-                                            />
-                                        </td>
-                                    )}
-                                    {entry.editing && (
-                                        <td>
-                                            <input
-                                                className="editable"
-                                                type="date"
-                                                value={entry.startDate}
-                                                onChange={(e) => {
-                                                    const updatedRows = [...rows];
-                                                    updatedRows[index].startDate = e.target.value;
-                                                    setRows(updatedRows);
-                                                }}
-                                            />
-                                        </td>
-                                    )}
-                                    {entry.editing && (
-                                        <td>
-                                            <input
-                                                className="editable"
-                                                type="date"
-                                                value={entry.endDate}
-                                                onChange={(e) => {
-                                                    const updatedRows = [...rows];
-                                                    updatedRows[index].endDate = e.target.value;
-                                                    setRows(updatedRows);
-                                                }}
-                                            />
-                                        </td>
-                                    )}
-                                    {entry.editing && (
-                                        <td>
-                                            <input
-                                                className="editable"
-                                                type="count"
-                                                value={entry.totalDays}
-                                                onChange={(e) => {
-                                                    const updatedRows = [...rows];
-                                                    updatedRows[index].totalDays = e.target.value;
-                                                    setRows(updatedRows);
-                                                }}
-                                            />
-                                        </td>
-                                    )}
-                                    {entry.editing && (
-                                        <td>
-                                            <textarea
-                                                className="editable"
-                                                type="text"
-                                                value={entry.description}
-                                                onChange={(e) => {
-                                                    const updatedRows = [...rows];
-                                                    updatedRows[index].description = e.target.value;
-                                                    setRows(updatedRows);
-                                                }}
-                                            />
-                                        </td>
-                                    )}
-                                    <td>
-                                        {!entry.editing && (
-                                            <button className="btn3" onClick={() => editRow(entry)}>
-                                                Edit
-                                            </button>
+                            rows.length === 0 ? (
+                                <h2 className="empty">No Data</h2>
+
+                            ) : (
+
+                                rows.map((entry, index) => (
+                                    <tr key={index}>
+                                        {!entry.editing && <td>{entry.title}</td>}
+                                        {!entry.editing && <td>{entry.startDate}</td>}
+                                        {!entry.editing && <td>{entry.endDate}</td>}
+                                        {!entry.editing && <td>{entry.totalDays}</td>}
+                                        {!entry.editing && <td>{entry.description}</td>}
+                                        {entry.editing && (
+                                            <td>
+                                                <input
+                                                    className="editable"
+                                                    type="text"
+                                                    value={entry.title}
+                                                    onChange={(e) => {
+                                                        const updatedRows = [...rows];
+                                                        updatedRows[index].title = e.target.value;
+                                                        setRows(updatedRows);
+                                                    }}
+                                                />
+                                            </td>
                                         )}
                                         {entry.editing && (
-                                            <button className="btn3" onClick={() => saveRow(entry)}>
-                                                Save
-                                            </button>
+                                            <td>
+                                                <input
+                                                    className="editable"
+                                                    type="date"
+                                                    value={entry.startDate}
+                                                    onChange={(e) => {
+                                                        const updatedRows = [...rows];
+                                                        updatedRows[index].startDate = e.target.value;
+                                                        setRows(updatedRows);
+                                                    }}
+                                                />
+                                            </td>
                                         )}
-                                        <button className="btn3" onClick={() => deleteRow(index)}>
-                                            Delete
-                                        </button>
-                                    </td>
+                                        {entry.editing && (
+                                            <td>
+                                                <input
+                                                    className="editable"
+                                                    type="date"
+                                                    value={entry.endDate}
+                                                    onChange={(e) => {
+                                                        const updatedRows = [...rows];
+                                                        updatedRows[index].endDate = e.target.value;
+                                                        setRows(updatedRows);
+                                                    }}
+                                                />
+                                            </td>
+                                        )}
+                                        {entry.editing && (
+                                            <td>
+                                                <input
+                                                    className="editable"
+                                                    type="count"
+                                                    value={entry.totalDays}
+                                                    onChange={(e) => {
+                                                        const updatedRows = [...rows];
+                                                        updatedRows[index].totalDays = e.target.value;
+                                                        setRows(updatedRows);
+                                                    }}
+                                                />
+                                            </td>
+                                        )}
+                                        {entry.editing && (
+                                            <td>
+                                                <textarea
+                                                    className="editable"
+                                                    type="text"
+                                                    value={entry.description}
+                                                    onChange={(e) => {
+                                                        const updatedRows = [...rows];
+                                                        updatedRows[index].description = e.target.value;
+                                                        setRows(updatedRows);
+                                                    }}
+                                                />
+                                            </td>
+                                        )}
+                                        <td>
+                                            {!entry.editing && (
+                                                <button className="btn3" onClick={() => editRow(entry)}>
+                                                    Edit
+                                                </button>
+                                            )}
+                                            {entry.editing && (
+                                                <button className="btn3" onClick={() => saveRow(entry)}>
+                                                    Save
+                                                </button>
+                                            )}
+                                            <button className="btn3" onClick={() => deleteRow(index)}>
+                                                Delete
+                                            </button>
+                                        </td>
 
-                                </tr>
-                            ))
+                                    </tr>
+                                ))
+
+
+                            )
                         }
+
+
+
                     </tbody>
 
                 </table>

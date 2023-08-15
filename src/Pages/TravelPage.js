@@ -1,4 +1,4 @@
-import React, { useCallback, useState } from "react";
+import React, { useState } from "react";
 import Form from "./Form";
 import Table from "./Table";
 import './TravelPage.css';
@@ -48,14 +48,14 @@ const TravelPage = () => {
 
         });
     };
-    const handleTableUpdate = (updatedData) => {
-        const capData = updatedData.map((entry) => ({
-            ...entry,
-            title: cap(entry.title),
-            description: cap(entry.description),
-        }));
+    // const handleTableUpdate = (updatedData) => {
+    //     const capData = updatedData.map((entry) => ({
+    //         ...entry,
+    //         title: cap(entry.title),
+    //         description: cap(entry.description),
+    //     }));
 
-    }
+    // }
     const isDateVaild = (dateStr) => {
         const currentDate = new Date();
         const selectedDate = new Date(dateStr);
@@ -97,6 +97,7 @@ const TravelPage = () => {
                     showPopup && (
                         <Form onClose={closePopup}
                             formData={formData}
+
                             handleChange={handleChange}
                             handleSubmit={handleSubmit}
                         ></Form>
@@ -113,7 +114,8 @@ const TravelPage = () => {
                             travelData={travelData}
                             cap={cap}
                             // onClose={handleTableClose}
-                            onUpdate={handleTableUpdate}
+                            // onUpdate={handleTableUpdate}
+                            setTravelData={setTravelData}
                         ></Table>
 
 
