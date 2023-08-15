@@ -37,6 +37,7 @@ function Table({ travelData, cap, onClose1, setTravelData }) {
         const updatedRows = [...rows];
         updatedRows.splice(index, 1);
         setRows(updatedRows);
+        setTravelData(updatedRows);
     };
 
     return (

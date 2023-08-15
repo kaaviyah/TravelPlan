@@ -22,8 +22,12 @@ th {
 
 }
 
-.empty {
+.empty,
+
+h2 {
     text-align: center;
+
+
     background-color: white;
     border-radius: 0.1rem;
     padding: 5px;
